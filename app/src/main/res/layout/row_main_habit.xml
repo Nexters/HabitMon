@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="21dp"
+    android:layout_marginRight="21dp"
+    android:paddingTop="3dp"
+    android:paddingBottom="3dp">
+
+    <com.pickth.habitmon.util.CircularImageView
+        android:layout_width="84dp"
+        android:layout_height="84dp"
+        android:background="@color/colorMainGray"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="21dp">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:background="@drawable/ic_clock"/>
+
+            <TextView
+                android:id="@+id/tv_habit_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:layout_marginBottom="1dp"
+                android:textColor="@color/colorTextLightGray"
+                android:textSize="12dp"
+                android:text="11:00 AM"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_habit_explanation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:textColor="@color/colorMainBlack"
+            android:textSize="18dp"
+            android:text="매일 1시에 일기 쓰기"/>
+    </LinearLayout>
+</LinearLayout>
