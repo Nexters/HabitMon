@@ -16,7 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.habit.HabitInfoActivity"/>
-        <activity android:name=".view.habit.AddHabitAcitivity"
+        <activity android:name=".view.habit.AddHabitActivity"
             android:windowSoftInputMode="stateHidden|adjustPan"/>
     </application>
 

@@ -16,7 +16,7 @@ import android.view.MenuItem;
 import com.pickth.habitmon.R;
 import com.pickth.habitmon.databinding.ActivityMainBinding;
 import com.pickth.habitmon.dto.HabitListItem;
-import com.pickth.habitmon.view.habit.AddHabitAcitivity;
+import com.pickth.habitmon.view.habit.AddHabitActivity;
 import com.pickth.habitmon.view.habit.HabitInfoActivity;
 import com.pickth.habitmon.view.main.adapter.HabitAdapter;
 import com.pickth.habitmon.view.main.presenter.MainContract;
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 break;
             case R.id.menu_add:
-                startActivityForResult(new Intent(this, AddHabitAcitivity.class), REQUEST_CODE_ADD);
+                startActivityForResult(new Intent(this, AddHabitActivity.class), REQUEST_CODE_ADD);
                 overridePendingTransition(0,0);
                 break;
         }

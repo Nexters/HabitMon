@@ -16,36 +16,25 @@ import com.pickth.habitmon.util.FontUtil;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import static com.pickth.habitmon.R.id.btn_add_day_0;
-
 /**
  * Created by Kim on 2017-02-17.
  */
 
-public class AddHabitAcitivity extends AppCompatActivity implements View.OnClickListener{
+public class AddHabitActivity extends AppCompatActivity implements View.OnClickListener{
     private boolean[] selectedDay = new boolean[7];
 
-    @BindView(R.id.tv_toolbar_text)
-    TextView tvToolbarText;
-    @BindView(R.id.base_toolbar)
-    Toolbar baseToolbar;
+    @BindView(R.id.tv_toolbar_text) TextView tvToolbarText;
+    @BindView(R.id.base_toolbar)    Toolbar baseToolbar;
 
-    @BindView(btn_add_day_0)
-    Button btnAddDay0;
-    @BindView(R.id.btn_add_day_1)
-    Button btnAddDay1;
-    @BindView(R.id.btn_add_day_2)
-    Button btnAddDay2;
-    @BindView(R.id.btn_add_day_3)
-    Button btnAddDay3;
-    @BindView(R.id.btn_add_day_4)
-    Button btnAddDay4;
-    @BindView(R.id.btn_add_day_5)
-    Button btnAddDay5;
-    @BindView(R.id.btn_add_day_6)
-    Button btnAddDay6;
-    @BindView(R.id.btn_every_day)
-    Button btnEveryDay;
+    @BindView(R.id.btn_add_day_0)   Button btnAddDay0;
+    @BindView(R.id.btn_add_day_1)   Button btnAddDay1;
+    @BindView(R.id.btn_add_day_2)   Button btnAddDay2;
+    @BindView(R.id.btn_add_day_3)   Button btnAddDay3;
+    @BindView(R.id.btn_add_day_4)   Button btnAddDay4;
+    @BindView(R.id.btn_add_day_5)   Button btnAddDay5;
+    @BindView(R.id.btn_add_day_6)   Button btnAddDay6;
+    @BindView(R.id.btn_every_day)   Button btnEveryDay;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

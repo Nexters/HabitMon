@@ -25,10 +25,8 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="새로 만들 습관의 이름을 적어주세요."
-                    android:textSize="15dp" />
+                    style="@style/AddHabitItemTitle"
+                    android:text="새로 만들 습관의 이름을 적어주세요." />
 
                 <EditText
                     android:layout_width="match_parent"
@@ -37,67 +35,73 @@
                     android:maxLines="1" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/AddHabitItemTitle"
                     android:layout_marginTop="20dp"
-                    android:text="일주일 동안 반복할 요일을 정해주세요."
-                    android:textColor="@color/colorMainBlack"
-                    android:textSize="15dp" />
+                    android:text="일주일 동안 반복할 요일을 정해주세요." />
+
 
                 <LinearLayout
-                    android:id="@+id/ll_add_day"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:gravity="center_horizontal"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/btn_add_day_0"
-                        style="@style/AddDayButton"
-                        android:text="월" />
-
-                    <Button
-                        android:id="@+id/btn_add_day_1"
-                        style="@style/AddDayButton"
-                        android:text="화" />
-
-                    <Button
-                        android:id="@+id/btn_add_day_2"
-                        style="@style/AddDayButton"
-                        android:text="수" />
-
-                    <Button
-                        android:id="@+id/btn_add_day_3"
-                        style="@style/AddDayButton"
-                        android:text="목" />
-
-                    <Button
-                        android:id="@+id/btn_add_day_4"
-                        style="@style/AddDayButton"
-                        android:text="금" />
-
-                    <Button
-                        android:id="@+id/btn_add_day_5"
-                        style="@style/AddDayButton"
-                        android:text="토" />
-
-                    <Button
-                        android:id="@+id/btn_add_day_6"
-                        style="@style/AddDayButton"
-                        android:text="일" />
-
-                </LinearLayout>
-
-                <Button
-                    android:id="@+id/btn_every_day"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="9dp"
-                    android:background="@drawable/day_rectangle_long_selector"
                     android:layout_gravity="center_horizontal"
-                    android:text="매일 할래요."
-                    android:textColor="@color/colorMainGray" />
+                    android:layout_marginTop="15dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btn_add_day_0"
+                            style="@style/AddDayButton"
+                            android:text="월" />
+
+                        <Button
+                            android:id="@+id/btn_add_day_1"
+                            style="@style/AddDayButton"
+                            android:text="화" />
+
+                        <Button
+                            android:id="@+id/btn_add_day_2"
+                            style="@style/AddDayButton"
+                            android:text="수" />
+
+                        <Button
+                            android:id="@+id/btn_add_day_3"
+                            style="@style/AddDayButton"
+                            android:text="목" />
+
+                        <Button
+                            android:id="@+id/btn_add_day_4"
+                            style="@style/AddDayButton"
+                            android:text="금" />
+
+                        <Button
+                            android:id="@+id/btn_add_day_5"
+                            style="@style/AddDayButton"
+                            android:text="토" />
+
+                        <Button
+                            android:id="@+id/btn_add_day_6"
+                            style="@style/AddDayButton"
+                            android:text="일" />
+
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/btn_every_day"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginTop="9dp"
+                        android:background="@drawable/day_rectangle_long_selector"
+                        android:minHeight="9dp"
+                        android:minWidth="9dp"
+                        android:text="매일 할래요"
+                        android:textColor="@color/colorMainGray" />
+                </LinearLayout>
             </LinearLayout>
 
             <!-- 시간 설정 -->
@@ -106,15 +110,11 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="원하는 시간에 알람을 설정하세요."
-                    android:textColor="@color/colorMainBlack"
-                    android:textSize="15dp" />
+                    style="@style/AddHabitItemTitle"
+                    android:text="원하는 시간에 알람을 설정하세요." />
 
-                <TimePicker
+                <com.pickth.habitmon.util.MyTimePicker
                     android:id="@+id/timePicker"
-                    style="@style/myTimePicker"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -126,16 +126,44 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="나를 위한 응원 메세지를 녹음해보세요."
-                    android:textColor="@color/colorMainBlack"
-                    android:textSize="15dp" />
+                    style="@style/AddHabitItemTitle"
+                    android:text="나를 위한 응원 메세지를 녹음해보세요." />
 
-                <ImageView
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="0.3dp"
-                    android:background="@color/colorMainGray" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="21dp">
+
+                    <ImageView
+                        android:id="@+id/iv_record_voice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/record_voice_selector"
+                        android:layout_marginRight="33dp"
+                        android:layout_marginLeft="33dp"
+                        android:clickable="true"
+                        android:maxHeight="90dp"
+                        android:maxWidth="90dp"
+                        android:src="@drawable/ic_voice" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@+id/iv_record_voice"
+                        android:text="삭제"
+                        android:textColor="@color/colorTextLightGray"
+                        android:textSize="15dp" />
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toStartOf="@+id/iv_record_voice"
+                        android:src="@drawable/ic_play" />
+                </RelativeLayout>
             </LinearLayout>
 
         </LinearLayout>
