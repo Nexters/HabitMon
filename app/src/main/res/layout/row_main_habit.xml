@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="habit"
+            type="com.pickth.habitmon.dto.HabitListItem"/>
+    </data>
+<LinearLayout
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="21dp"
@@ -36,7 +42,7 @@
                 android:layout_marginBottom="1dp"
                 android:textColor="@color/colorTextLightGray"
                 android:textSize="12dp"
-                android:text="11:00 AM"/>
+                android:text="@{habit.title}"/>
         </LinearLayout>
 
         <TextView
@@ -46,6 +52,7 @@
             android:layout_marginTop="6dp"
             android:textColor="@color/colorMainBlack"
             android:textSize="18dp"
-            android:text="매일 1시에 일기 쓰기"/>
+            android:text="@{habit.explanation}"/>
     </LinearLayout>
 </LinearLayout>
+</layout>

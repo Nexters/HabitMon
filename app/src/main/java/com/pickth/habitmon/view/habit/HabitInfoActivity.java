@@ -1,4 +1,4 @@
-package com.pickth.habitmon.habit.info;
+package com.pickth.habitmon.view.habit;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

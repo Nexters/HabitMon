@@ -1,6 +1,7 @@
-package com.pickth.habitmon.main;
+package com.pickth.habitmon.view.main;
 
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -8,45 +9,41 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
 
 import com.pickth.habitmon.R;
-import com.pickth.habitmon.habit.add.AddHabitAcitivity;
-import com.pickth.habitmon.habit.info.HabitInfoActivity;
+import com.pickth.habitmon.databinding.ActivityMainBinding;
+import com.pickth.habitmon.dto.HabitListItem;
+import com.pickth.habitmon.view.habit.AddHabitAcitivity;
+import com.pickth.habitmon.view.habit.HabitInfoActivity;
+import com.pickth.habitmon.view.main.adapter.HabitAdapter;
+import com.pickth.habitmon.view.main.presenter.MainContract;
+import com.pickth.habitmon.view.main.presenter.MainPresenter;
 
 import java.util.ArrayList;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MainContract.View{
     private static final int REQUEST_CODE_ADD = 1;
+
+    HabitAdapter adapter;
     ArrayList<HabitListItem> arrList = new ArrayList<>();
 
-    // bind view
-    @BindView(R.id.rv_main)
-    RecyclerView rvMain;
-
-    @BindView(R.id.main_toolbar)
-    Toolbar mainToolbar;
-
-    @BindView(R.id.main_draw_layout)
-    DrawerLayout mDrawerLayout;
+    // view
+    private MainContract.Presenter presenter;
+    private ActivityMainBinding binding;
+    private DrawerLayout mDrawerLayout;
+    private RecyclerView rvMain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
         // actionbar
         {
-            setSupportActionBar(mainToolbar);
+            setSupportActionBar(binding.mainContent.mainToolbar);
             final ActionBar actionBar = getSupportActionBar();
             actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
             actionBar.setDisplayHomeAsUpEnabled(true);
@@ -56,24 +53,19 @@ public class MainActivity extends AppCompatActivity {
             actionBar.setDisplayShowTitleEnabled(false); // disable the default title element here (for centered title)
         }
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
-        HabitAdapter adapter = new HabitAdapter(arrList);
+        mDrawerLayout = binding.mainDrawLayout;
+        rvMain = binding.mainContent.rvMain;
 
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
+        adapter = new HabitAdapter(arrList);
         rvMain.setLayoutManager(layoutManager);
         rvMain.setAdapter(adapter);
-        adapter.onItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                startActivity(new Intent(getApplicationContext(), HabitInfoActivity.class));
-                overridePendingTransition(0,0);
-            }
-        });
 
-        {
-            for(int i=0; i<3; i++) {
-                arrList.add(new HabitListItem("",""));
-            }
-        }
+        presenter = new MainPresenter();
+        presenter.attachView(this);
+        presenter.setHabitAdapterModel(adapter);
+        presenter.setHabitAdapterView(adapter);
+        presenter.loadItems(true);
     }
 
     @Override
@@ -97,16 +89,6 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if(requestCode == REQUEST_CODE_ADD) {
-
-        }
-    }
-
-
     // 취소버튼 눌렀을 때
     @Override
     public void onBackPressed() {
@@ -115,5 +97,12 @@ public class MainActivity extends AppCompatActivity {
             mDrawerLayout.closeDrawer(GravityCompat.START);
             return;
         }
+        super.onBackPressed();
+    }
+
+    @Override
+    public void startHabitInfoActivity(int position) {
+        startActivity(new Intent(getApplicationContext(), HabitInfoActivity.class));
+        overridePendingTransition(0,0);
     }
 }

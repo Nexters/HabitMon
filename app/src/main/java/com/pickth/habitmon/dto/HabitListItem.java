@@ -1,4 +1,4 @@
-package com.pickth.habitmon.main;
+package com.pickth.habitmon.dto;
 
 /**
  * Created by Kim on 2017-02-11.
